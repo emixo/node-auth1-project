@@ -2,8 +2,8 @@ const router = require('express').Router()
 
 const bcryptjs = require('bcryptjs')
 
-const Users = require('./users/users-model.js')
-const userModel = require('./users/users-model.js')
+const Users = require('../users/users-model.js')
+const userModel = require('../users/users-model.js')
 
 router.post('/register', (req, res) => {
     const {username, password} = req.body
@@ -14,7 +14,10 @@ router.post('/register', (req, res) => {
     .then(user => {
         res.status(200).json(user)
     })
-    .catch(err => res.send(err))
+    .catch(err => {
+        console.log(err)
+        res.status(500).send(err)
+    })
 })
 
 router.post('/login', (req, res) => {

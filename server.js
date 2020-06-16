@@ -33,7 +33,7 @@ const sessionConfig = {
 server.use(express.json())
 server.use(cors())
 server.use(helmet())
-server.use(sesstion(sessionConfig))
+server.use(session(sessionConfig))
 
 server.use('/api/users', requiresAuth, usersRouter)
 server.use('/api/auth', authRouter)
